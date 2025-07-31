@@ -12,12 +12,15 @@ endif()
 find_package(cpr CONFIG REQUIRED)
 find_package(PahoMqttCpp CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
-find_package(cxxopts CONFIG REQUIRED)
+find_package(CLI11 CONFIG REQUIRED)
 
 add_library(vsensor
-    src/TemperatureSensor.cpp
-    src/MQTTTransport.cpp
-    src/SimulatedTemperatureSource.cpp
+    src/sensors/TemperatureSensor.cpp
+    src/transport/MQTTTransport.cpp
+    src/sensors/SimulatedTemperatureSource.cpp
+    src/cli/CliParser.cpp
+    src/factories/TemperatureSensorFactory.cpp
+    src/factories/MQTTTransportFactory.cpp
 )
 
 target_include_directories(vsensor PUBLIC include)
@@ -26,7 +29,8 @@ target_link_libraries(vsensor
         cpr::cpr
         PahoMqttCpp::paho-mqttpp3
         nlohmann_json::nlohmann_json
+        CLI11::CLI11
 )
 
 add_executable(vsensor_cli src/main.cpp)
-target_link_libraries(vsensor_cli PRIVATE vsensor cxxopts::cxxopts)
+target_link_libraries(vsensor_cli PRIVATE vsensor)

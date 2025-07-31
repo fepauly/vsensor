@@ -1,6 +1,6 @@
 #pragma once
 
-#include "vsensor/ISensor.hpp"
+#include "vsensor/core/ISensor.hpp"
 
 namespace vsensor {
 

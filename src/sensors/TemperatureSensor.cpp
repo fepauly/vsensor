@@ -1,8 +1,8 @@
-#include "vsensor/TemperatureSensor.hpp"
+#include "vsensor/sensors/TemperatureSensor.hpp"
 
 namespace vsensor {
     TemperatureSensor::TemperatureSensor(std::unique_ptr<ITemperatureSource> source,
-                                        ITransport& transport,
+                                        std::shared_ptr<ITransport> transport,
                                         Unit out_unit = Unit::Celsius)
         : m_source{std::move(source)}, m_transport{transport}, m_out_unit{out_unit}
     {}
@@ -14,7 +14,7 @@ namespace vsensor {
         double temp_out = temp_c; // TODO Conversion of units
 
         SensorReading reading{temp_out, m_out_unit, now};
-        m_transport.publish(reading);
+        m_transport->publish(reading);
 
         return reading;
     }

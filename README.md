@@ -8,7 +8,7 @@ Goal is to replicate real world sensors with different transport protocols, e.g.
 
 - Simulated temperature sensor (based on simple sinus curve simulating a day with random noise)
 - CLI tool
-- Modular and expandable architecure
+- Modular and expandable architecure (using registry and factory patterns for sensors and transport modules)
 
 ## Compilation
 
@@ -23,7 +23,7 @@ cmake -B build -DCMAKE_TOOLCHAIN_FILE=<path/to/vcpkg.cmake>
 cmake --build build
 
 # Run vsensor
-./build/vsensor_cli
+./build/vsensor_cli --help
 ```
 
 ## Roadmap

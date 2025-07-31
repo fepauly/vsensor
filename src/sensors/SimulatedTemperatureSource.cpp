@@ -1,4 +1,4 @@
-#include "vsensor/SimulatedTemperatureSource.hpp"
+#include "vsensor/sensors/SimulatedTemperatureSource.hpp"
 
 #include <cmath>
 

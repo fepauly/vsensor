@@ -1,6 +1,6 @@
 #pragma once
 
-#include "vsensor/ITemperatureSource.hpp"
+#include "vsensor/core/ITemperatureSource.hpp"
 
 #include <random>
 #include <chrono>
